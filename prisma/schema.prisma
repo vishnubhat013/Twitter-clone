@@ -72,3 +72,11 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+
+model posts {
+    id String @id
+    content String 
+    createdAt DateTime
+    AuthorId String 
+}
