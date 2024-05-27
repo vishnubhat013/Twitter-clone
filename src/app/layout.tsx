@@ -1,8 +1,9 @@
 import "~/styles/globals.css";
-
+import SideNav from "../components/SideNav";
 import { GeistSans } from "geist/font/sans";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import Head from "next/head";
 
 export const metadata = {
   title: "Create T3 App",
@@ -18,7 +19,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Head>
+            <title>Twitter Clone</title>
+            <meta
+              name="description"
+              content="This is a Twitter clone by Web Dev Simplified"
+            />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <div className="container mx-auto flex items-start">
+            <SideNav />
+            <div className="min-h-screen flex-grow border-x">{children}</div>
+          </div>
+        </TRPCReactProvider>
       </body>
     </html>
   );
