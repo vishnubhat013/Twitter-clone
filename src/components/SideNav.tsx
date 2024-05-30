@@ -1,11 +1,11 @@
 
 import Link from "next/link";
-import { getServerAuthSession } from "~/server/auth";
-import AuthButtons from "./AuthButtons";
+import { useSession } from "next-auth/react";
+import AuthButtons from "./AuthButtons"
 
 
 export default async function sideNav() {
-  const session = await getServerAuthSession();
+  const {data:session} =useSession();
   const user = session?.user
   return (
     <nav className="sticky top-0 px-2 py-4">

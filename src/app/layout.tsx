@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "Create T3 App",
@@ -19,20 +20,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <TRPCReactProvider>
-          <Head>
-            <title>Twitter Clone</title>
-            <meta
-              name="description"
-              content="This is a Twitter clone by Web Dev Simplified"
-            />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <div className="sm container mx-auto flex items-start sm:pr-4">
-            <SideNav />
-            <div className="min-h-screen flex-grow border-x">{children}</div>
-          </div>
-        </TRPCReactProvider>
+        <SessionProvider>
+          <TRPCReactProvider>
+            <Head>
+              <title>Twitter Clone</title>
+              <meta
+                name="description"
+                content="This is a Twitter clone by Web Dev Simplified"
+              />
+              <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <div className="sm container mx-auto flex items-start sm:pr-4">
+              <SideNav />
+              <div className="min-h-screen flex-grow border-x">{children}</div>
+            </div>
+          </TRPCReactProvider>
+        </SessionProvider>
       </body>
     </html>
   );
