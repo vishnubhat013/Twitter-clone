@@ -1,3 +1,4 @@
+"use client"
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 type Buttonprops = {
   small?: boolean;
